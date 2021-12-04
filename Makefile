@@ -152,12 +152,11 @@ $(RAYLIB_STATIC):
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE_PATHS) -D$(PLATFORM)
 
 make_dirs:
-	if exist "$(FOLDER)" rmdir /s /q "$(FOLDER)"
-	if not exist "$(FOLDER)" mkdir "$(FOLDER)"
-
+	@rm "$(FOLDER)" -rf
+	@mkdir -p "$(FOLDER)"
 # Clean everything
 clean: clean_web clean_desktop
-	if exist build rmdir /s /q build
+	rm "build" -rf
 	@echo Cleaning done
 
 clean_web:
